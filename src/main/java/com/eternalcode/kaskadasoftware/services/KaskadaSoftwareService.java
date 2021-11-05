@@ -1,8 +1,8 @@
-package com.eternalcode.lobbysoftware.services;
+package com.eternalcode.kaskadasoftware.services;
 
-import com.eternalcode.lobbysoftware.commands.GamemodeCommand;
-import com.eternalcode.lobbysoftware.generators.ChunkGenerator;
-import com.eternalcode.lobbysoftware.initializations.PlayerInit;
+import com.eternalcode.kaskadasoftware.commands.GamemodeCommand;
+import com.eternalcode.kaskadasoftware.generators.ChunkGenerator;
+import com.eternalcode.kaskadasoftware.initializations.PlayerInit;
 import lombok.Getter;
 import lombok.Setter;
 import net.kyori.adventure.text.Component;

@@ -1,4 +1,4 @@
-package com.eternalcode.lobbysoftware.generators;
+package com.eternalcode.kaskadasoftware.generators;
 
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.instance.Chunk;

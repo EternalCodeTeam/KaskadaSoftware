@@ -1,4 +1,4 @@
-package com.eternalcode.lobbysoftware.listeners;
+package com.eternalcode.kaskadasoftware.listeners;
 
 import net.minestom.server.event.Event;
 import net.minestom.server.event.EventListener;

@@ -1,6 +1,6 @@
-package com.eternalcode.lobbysoftware;
+package com.eternalcode.kaskadasoftware;
 
-import com.eternalcode.lobbysoftware.services.KaskadaSoftwareService;
+import com.eternalcode.kaskadasoftware.services.KaskadaSoftwareService;
 import net.minestom.server.MinecraftServer;
 
 public class KaskadaSoftware {

@@ -1,4 +1,4 @@
-package com.eternalcode.lobbysoftware.commands;
+package com.eternalcode.kaskadasoftware.commands;
 
 import net.kyori.adventure.audience.MessageType;
 import net.kyori.adventure.text.Component;

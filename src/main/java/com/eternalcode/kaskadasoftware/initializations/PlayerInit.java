@@ -1,6 +1,6 @@
-package com.eternalcode.lobbysoftware.initializations;
+package com.eternalcode.kaskadasoftware.initializations;
 
-import com.eternalcode.lobbysoftware.generators.ChunkGenerator;
+import com.eternalcode.kaskadasoftware.generators.ChunkGenerator;
 import net.kyori.adventure.text.Component;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.adventure.audience.Audiences;
