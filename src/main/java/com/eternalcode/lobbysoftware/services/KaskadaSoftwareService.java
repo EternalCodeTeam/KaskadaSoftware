@@ -3,6 +3,8 @@ package com.eternalcode.lobbysoftware.services;
 import com.eternalcode.lobbysoftware.commands.GamemodeCommand;
 import com.eternalcode.lobbysoftware.generators.ChunkGenerator;
 import com.eternalcode.lobbysoftware.initializations.PlayerInit;
+import lombok.Getter;
+import lombok.Setter;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.MinecraftServer;
@@ -18,6 +20,7 @@ import net.minestom.server.extras.velocity.VelocityProxy;
 import net.minestom.server.instance.InstanceContainer;
 import net.minestom.server.instance.InstanceManager;
 
+@Getter @Setter
 public class KaskadaSoftwareService {
 
     public static void init() {
@@ -36,13 +39,13 @@ public class KaskadaSoftwareService {
         // Shutdown task
         MinecraftServer.getSchedulerManager().buildShutdownTask(() -> System.out.println("Good night")).schedule();
 
+        // Listeners manager
         GlobalEventHandler globalEventHandler = MinecraftServer.getGlobalEventHandler();
         globalEventHandler.addListener(PlayerLoginEvent.class, event -> {
             Player player = event.getPlayer();
             event.setSpawningInstance(instanceContainer);
             player.setRespawnPoint(new Pos(0, 42, 0));
             System.out.println("KaskadaSoftware started successfully");
-
         });
 
         // Other initializations
