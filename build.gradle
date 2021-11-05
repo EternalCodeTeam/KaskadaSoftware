@@ -1,0 +1,40 @@
+plugins {
+    id "java"
+    id "com.github.johnrengelman.shadow" version "7.1.0"
+}
+
+group "com.eternalcode.lobbysoftware"
+version "1.0"
+
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.panda-lang.org/releases" }
+    maven { url "https://repo.spongepowered.org/maven" }
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    // lombok
+    compileOnly "org.projectlombok:lombok:1.18.22"
+    annotationProcessor "org.projectlombok:lombok:1.18.22"
+
+    // expressible
+    implementation "org.panda-lang:expressible:1.1.1"
+
+    // Minestom
+    implementation "com.github.Minestom:Minestom:acc711c"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+shadowJar {
+    archiveFileName = "LobbySoftware.jar"
+    manifest {
+        attributes "Main-Class": "com.eternalcode.lobbysoftware.LobbySoftware"
+        relocate "org.panda-lang", "com.eternalcode.libs.org.panda-lang"
+    }
+}
