@@ -136,8 +136,9 @@ public class PlayerInit {
         BenchmarkManager benchmarkManager = MinecraftServer.getBenchmarkManager();
         MinecraftServer.getSchedulerManager().buildTask(() -> {
             Collection<Player> players = MinecraftServer.getConnectionManager().getOnlinePlayers();
-            if (players.isEmpty())
+            if (players.isEmpty()) {
                 return;
+            }
 
             long ramUsage = benchmarkManager.getUsedMemory();
             ramUsage /= 1e6; // bytes to MB
