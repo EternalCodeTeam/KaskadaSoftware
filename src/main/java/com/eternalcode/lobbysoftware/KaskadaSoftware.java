@@ -10,7 +10,7 @@ import net.minestom.server.event.player.PlayerLoginEvent;
 import net.minestom.server.instance.*;
 import net.minestom.server.coordinate.Pos;
 
-public class LobbySoftware {
+public class KaskadaSoftware {
     public static void main(String[] strings) {
         // Initialization
         System.out.println("Starting...");
