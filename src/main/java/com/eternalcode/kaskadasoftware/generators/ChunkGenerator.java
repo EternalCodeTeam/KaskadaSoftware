@@ -18,7 +18,7 @@ public class ChunkGenerator implements net.minestom.server.instance.ChunkGenerat
         for (byte x = 0; x < Chunk.CHUNK_SIZE_X; x++)
             for (byte z = 0; z < Chunk.CHUNK_SIZE_Z; z++) {
                 for (byte y = 0; y < 2; y++) {
-                    batch.setBlock(x, y, z, Block.STONE);
+                    batch.setBlock(x, y, z, Block.BEDROCK);
                 }
             }
     }
