@@ -13,14 +13,10 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.GlobalEventHandler;
 import net.minestom.server.event.player.PlayerLoginEvent;
-import net.minestom.server.extras.MojangAuth;
-import net.minestom.server.extras.bungee.BungeeCordProxy;
 import net.minestom.server.extras.optifine.OptifineSupport;
-import net.minestom.server.extras.velocity.VelocityProxy;
 import net.minestom.server.instance.InstanceContainer;
 import net.minestom.server.instance.InstanceManager;
 
-@Getter @Setter
 public class KaskadaSoftwareService {
 
     public static void init() {
@@ -49,10 +45,11 @@ public class KaskadaSoftwareService {
         });
 
         // Other initializations
-        PlayerInit.init();
+        // PlayerInit.init();
         OptifineSupport.enable();
-        VelocityProxy.enable("");
-        BungeeCordProxy.enable();
-        MojangAuth.init();
+        // VelocityProxy.enable("");
+        // BungeeCordProxy.enable();
+        // MojangAuth.init();
+
     }
 }
