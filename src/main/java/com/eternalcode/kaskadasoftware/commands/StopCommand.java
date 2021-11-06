@@ -14,6 +14,7 @@ public class StopCommand extends Command {
     }
 
     private void execute(@NotNull CommandSender commandSender, @NotNull CommandContext commandContext) {
+        commandSender.sendMessage("stopping server...");
         MinecraftServer.stopCleanly();
     }
 }
