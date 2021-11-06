@@ -37,6 +37,7 @@ import net.minestom.server.world.DimensionType;
 
 import java.time.Duration;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
@@ -53,8 +54,7 @@ public class PlayerInit {
 
                 entity.takeKnockback(0.4f, Math.sin(source.getPosition().yaw() * 0.017453292), -Math.cos(source.getPosition().yaw() * 0.017453292));
 
-                if (entity instanceof Player) {
-                    Player target = (Player) entity;
+                if (entity instanceof Player target) {
                     target.damage(DamageType.fromEntity(source), 5);
                 }
 
@@ -78,7 +78,7 @@ public class PlayerInit {
                 Pos playerPos = player.getPosition();
                 ItemEntity itemEntity = new ItemEntity(droppedItem);
                 itemEntity.setPickupDelay(Duration.of(500, TimeUnit.MILLISECOND));
-                itemEntity.setInstance(player.getInstance(), playerPos.withY(y -> y + 1.5));
+                itemEntity.setInstance(Objects.requireNonNull(player.getInstance()), playerPos.withY(y -> y + 1.5));
                 Vec velocity = playerPos.direction().mul(6);
                 itemEntity.setVelocity(velocity);
             })
@@ -104,14 +104,6 @@ public class PlayerInit {
                                         .canDestroy(Set.of(Block.DIAMOND_ORE)))
                         .build();
                 player.getInventory().addItemStack(itemStack);
-
-                ItemStack bundle = ItemStack.builder(Material.BUNDLE)
-                        .meta(BundleMeta.class, bundleMetaBuilder -> {
-                            bundleMetaBuilder.addItem(ItemStack.of(Material.DIAMOND, 5));
-                            bundleMetaBuilder.addItem(ItemStack.of(Material.RABBIT_FOOT, 5));
-                        })
-                        .build();
-                player.getInventory().addItemStack(bundle);
             });
 
     static {
@@ -144,12 +136,12 @@ public class PlayerInit {
             ramUsage /= 1e6; // bytes to MB
 
             TickMonitor tickMonitor = LAST_TICK.get();
-            final Component header = Component.text("RAM USAGE: " + ramUsage + " MB")
+            Component header = Component.text("RAM USAGE: " + ramUsage + " MB")
                     .append(Component.newline())
                     .append(Component.text("TICK TIME: " + MathUtils.round(tickMonitor.getTickTime(), 2) + "ms"))
                     .append(Component.newline())
                     .append(Component.text("ACQ TIME: " + MathUtils.round(tickMonitor.getAcquisitionTime(), 2) + "ms"));
-            final Component footer = benchmarkManager.getCpuMonitoringMessage();
+            Component footer = benchmarkManager.getCpuMonitoringMessage();
             Audiences.players().sendPlayerListHeaderAndFooter(header, footer);
         }).repeat(10, TimeUnit.SERVER_TICK).schedule();
     }
