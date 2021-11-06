@@ -43,12 +43,7 @@ public class GiveCommand extends Command {
             }
 
             final List<Entity> targets = entityFinder.find(sender);
-            for (Entity target : targets) {
-                if (target instanceof Player) {
-                    Player player = (Player) target;
-                    player.getInventory().addItemStacks(itemStacks, TransactionOption.ALL);
-                }
-            }
+            targets.stream().filter(target -> target instanceof Player).map(target -> (Player) target).forEach(player -> player.getInventory().addItemStacks(itemStacks, TransactionOption.ALL));
 
             sender.sendMessage(Component.text("Items have been given successfully!"));
 
