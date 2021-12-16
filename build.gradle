@@ -26,7 +26,7 @@ dependencies {
     implementation "com.github.Minestom:Minestom:acc711c"
 
     // Snakeyaml
-    implementation 'org.yaml:snakeyaml:1.29'
+    implementation 'org.yaml:snakeyaml:1.30'
 }
 
 java {
