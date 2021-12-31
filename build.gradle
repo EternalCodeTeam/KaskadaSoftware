@@ -20,7 +20,7 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:1.18.22"
 
     // expressible
-    implementation "org.panda-lang:expressible:1.1.1"
+    implementation "org.panda-lang:expressible:1.1.9"
 
     // Minestom
     implementation "com.github.Minestom:Minestom:acc711c"
