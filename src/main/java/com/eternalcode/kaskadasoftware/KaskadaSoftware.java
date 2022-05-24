@@ -1,17 +1,32 @@
 package com.eternalcode.kaskadasoftware;
 
-import com.eternalcode.kaskadasoftware.services.KaskadaSoftwareService;
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.coordinate.Pos;
+import net.minestom.server.entity.Player;
+import net.minestom.server.event.GlobalEventHandler;
+import net.minestom.server.event.player.PlayerLoginEvent;
+import net.minestom.server.instance.InstanceContainer;
+import net.minestom.server.instance.InstanceManager;
+import net.minestom.server.instance.block.Block;
 
 public class KaskadaSoftware {
-    public static void main(String[] strings) {
-        System.out.println("Starting KaskadaSoftware...");
+    public static void main(String[] args) {
+        MinecraftServer minecraftServer = MinecraftServer.init();
+        InstanceManager instanceManager = MinecraftServer.getInstanceManager();
 
-        // Initialization
-        MinecraftServer.init();
-        KaskadaSoftwareService.init();
+        InstanceContainer instanceContainer = instanceManager.createInstanceContainer();
 
-        // Start the server on port 25565
-        MinecraftServer.init().start("0.0.0.0", 25565);
+        instanceContainer.setGenerator(unit ->
+                unit.modifier().fillHeight(0, 40, Block.GRASS_BLOCK));
+
+        GlobalEventHandler globalEventHandler = MinecraftServer.getGlobalEventHandler();
+
+        globalEventHandler.addListener(PlayerLoginEvent.class, event -> {
+            Player player = event.getPlayer();
+            event.setSpawningInstance(instanceContainer);
+            player.setRespawnPoint(new Pos(0, 42, 0));
+        });
+
+        minecraftServer.start("0.0.0.0", 25565);
     }
 }
